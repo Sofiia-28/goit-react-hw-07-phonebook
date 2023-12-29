@@ -1,17 +1,13 @@
 import { Wrapper, Button } from './ContactList.styled';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { selectedContacts, selectedFilter } from '../../redux/selectors';
-import { deleteContact } from '../../redux/phonebookSlice';
+import { selectedFilteredContacts } from '../../redux/selectors';
+import { deleteContact } from '../../redux/operations';
 
 export const ContactList = () => {
-  const contacts = useSelector(selectedContacts);
-  const filter = useSelector(selectedFilter);
-  const filteredContacts = contacts.filter(contact => {
-    const hasName = contact.name.toLowerCase().includes(filter.toLowerCase());
-    return hasName;
-  });
+  const filteredContacts = useSelector(selectedFilteredContacts);
   const dispatch = useDispatch();
+
   return (
     <ul>
       {filteredContacts.map(({ id, name, number }) => {

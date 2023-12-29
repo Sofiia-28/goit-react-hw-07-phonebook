@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectedContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/phonebookSlice';
+import { addContact } from '../../redux/operations';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
